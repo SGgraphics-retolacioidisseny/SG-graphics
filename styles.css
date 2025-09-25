@@ -2,22 +2,17 @@
   --text: #ffffff;
   --muted: #e5e5e5;
   --shadow: 0 0.125em 0.375em rgba(0,0,0,.6);
-  --bg: #2d2d2c; /* 🎨 Cambia aquí el color sólido de fondo */
+  --bg: #2d2d2c;
   font-size: 16px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 
-/* ===== Fondo sólido + LOGO como capa de background =====
-   Capa 1: logo.svg centrado, con tamaño controlado (PC)
-   Capa 2: color sólido de fondo
-*/
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell;
   color: var(--text);
 
-  /* 👇 AJUSTA AQUÍ EL TAMAÑO DEL LOGO EN PC (primer valor: 160px) */
   background:
     url("logos/Recurso49.svg") no-repeat center 40% / 60em auto,
     var(--bg);
@@ -30,16 +25,13 @@ body {
   padding: 1.5em;
 }
 
-/* ===== Móvil: logo más grande si quieres ===== */
 @media (max-width: 768px) {
   body {
-    /* 👇 AJUSTA AQUÍ EL TAMAÑO DEL LOGO EN MÓVIL (primer valor: 230px) */
-    background-size: 20em auto, auto;
-    background-position: center 10%, center; /* sube/baja el logo si quieres */
+    background-size: 22em auto, auto;
+    background-position: center 20%, center;
   }
 }
 
-/* Contenido centrado */
 .viewport {
   flex: 1;
   display: flex;
@@ -48,12 +40,12 @@ body {
   align-items: center;
 }
 
-/* ===== Botones ===== */
 .grid {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2em;
+  margin-top: 15em;
 }
 
 .btn {
@@ -65,10 +57,35 @@ body {
   transition: transform 0.2s, filter 0.2s;
 }
 
-.btn svg {
-  width: 3em;
-  height: 3em;
-  filter: drop-shadow(0 0.25em 0.6em rgba(0,0,0,0.55));
+.icon {
+  width: 5em;
+  height: 5em;
+  display: block;
+}
+
+.icon--insta {
+  transform: scale(0.80);
+  transform-origin: center center;
+}
+
+@media (min-width: 769px) {
+  .grid {
+    margin-top: 5em;
+    gap: 4em;
+  }
+
+  .icon {
+    width: 10em;
+    height: 10em;
+  }
+}
+
+@media (max-width: 768px) {
+  .icon {
+    width: 6em;
+    height: 6em;
+    margin-top: 3em;
+  }
 }
 
 .label {
@@ -85,15 +102,13 @@ body {
   outline: none;
 }
 
-/* ===== Footer ===== */
 .footer {
   font-size: 0.9em;
-  color: var(--muted);
+  color: #c2c6b6;
   text-shadow: var(--shadow);
   padding: 1em 0;
 }
 
-/* ===== Accesibilidad ===== */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
