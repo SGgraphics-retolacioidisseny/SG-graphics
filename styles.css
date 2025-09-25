@@ -1,0 +1,88 @@
+:root {
+  --text: #fff;
+  --muted: #e5e5e5;
+  --shadow: 0 0.125em 0.375em rgba(0,0,0,.6);
+  font-size: 16px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell;
+  color: var(--text);
+  background: url("logos/logo1.jpg") no-repeat center center fixed;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  text-align: center;
+  padding: 1.5em;
+}
+
+.viewport {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+  gap: 1.5em;
+  width: 100%;
+  max-width: 40em;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text);
+  padding: 0.6em;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.btn svg {
+  width: 3em;
+  height: 3em;
+  filter: drop-shadow(0 0.25em 0.6em rgba(0,0,0,0.55));
+}
+
+.label {
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 0.4em;
+  text-shadow: var(--shadow);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0.4em 1em rgba(0,0,0,0.6));
+  outline: none;
+}
+
+.footer {
+  font-size: 0.9em;
+  color: var(--muted);
+  text-shadow: var(--shadow);
+  padding: 1em 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  border: 0;
+}
+
+@media (max-width: 600px) {
+  :root { font-size: 14px; }
+  .btn svg { width: 2.5em; height: 2.5em; }
+}
