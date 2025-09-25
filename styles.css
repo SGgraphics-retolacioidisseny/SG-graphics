@@ -1,19 +1,26 @@
 :root {
-  --text: #fff;
+  --text: #ffffff;
   --muted: #e5e5e5;
   --shadow: 0 0.125em 0.375em rgba(0,0,0,.6);
+  --bg: #2d2d2c; /* 🎨 Cambia aquí el color sólido de fondo */
   font-size: 16px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
 
+/* ===== Fondo sólido + LOGO como capa de background =====
+   Capa 1: logo.svg centrado, con tamaño controlado (PC)
+   Capa 2: color sólido de fondo
+*/
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell;
   color: var(--text);
-  background: url("logos/logo1.jpg") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
+
+  /* 👇 AJUSTA AQUÍ EL TAMAÑO DEL LOGO EN PC (primer valor: 160px) */
+  background:
+    url("logos/Recurso49.svg") no-repeat center 40% / 60em auto,
+    var(--bg);
 
   display: flex;
   flex-direction: column;
@@ -23,55 +30,62 @@ body {
   padding: 1.5em;
 }
 
+/* ===== Móvil: logo más grande si quieres ===== */
+@media (max-width: 768px) {
+  body {
+    /* 👇 AJUSTA AQUÍ EL TAMAÑO DEL LOGO EN MÓVIL (primer valor: 230px) */
+    background-size: 20em auto, auto;
+    background-position: center 10%, center; /* sube/baja el logo si quieres */
+  }
+}
+
+/* Contenido centrado */
 .viewport {
   flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-/* Grid responsive */
+/* ===== Botones ===== */
 .grid {
-  display: grid;
-  gap: 1.5em;
-  width: 100%;
-  max-width: 40em;
-  grid-template-columns: repeat(auto-fit, minmax(8em, 1fr));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
 }
 
-/* Botones */
 .btn {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   text-decoration: none;
   color: var(--text);
-  padding: 0.8em;
-  min-height: 4.5em;
   transition: transform 0.2s, filter 0.2s;
 }
 
 .btn svg {
   width: 3em;
   height: 3em;
-  filter: drop-shadow(0 0.25em 0.6em rgba(0,0,0,.55));
+  filter: drop-shadow(0 0.25em 0.6em rgba(0,0,0,0.55));
 }
 
 .label {
+  margin-top: 0.4em;
   font-size: 1em;
   font-weight: 600;
-  margin-top: 0.4em;
   text-shadow: var(--shadow);
 }
 
 .btn:hover,
 .btn:focus-visible {
   transform: scale(1.08);
-  filter: drop-shadow(0 0.4em 1em rgba(0,0,0,.6));
+  filter: drop-shadow(0 0.4em 1em rgba(0,0,0,0.6));
   outline: none;
 }
 
+/* ===== Footer ===== */
 .footer {
   font-size: 0.9em;
   color: var(--muted);
@@ -79,22 +93,11 @@ body {
   padding: 1em 0;
 }
 
+/* ===== Accesibilidad ===== */
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
   padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0);
   border: 0;
-}
-
-/* Breakpoints */
-@media (max-width: 900px) {
-  :root { font-size: 15px; }
-}
-
-@media (max-width: 600px) {
-  :root { font-size: 14px; }
-  body { background-attachment: scroll; } /* mejor en móviles */
-  .btn svg { width: 2.5em; height: 2.5em; }
-  .grid { gap: 1em; }
 }
